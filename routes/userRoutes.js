@@ -4,7 +4,6 @@ const {registerUser, loginUser, allUsers, bookmarks, removeBookmarks, sendotp, g
 
 
 
-
 //TODO register......
 router.post('/register',registerUser)
 
