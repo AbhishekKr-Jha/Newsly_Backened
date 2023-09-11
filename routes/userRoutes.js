@@ -20,7 +20,7 @@ router.get('/allusers',allUsers)
 router.post('/userBookmarks/:id',bookmarks)
 
 //todo remove bookmarks......
-router.post('/removeBookmarks/:id',removeBookmarks)
+router.delete('/removeBookmarks/:id',removeBookmarks)
 
 //todo get  bookmarks......
 router.post('/getBookmarks/:id',getUserBookmarks)

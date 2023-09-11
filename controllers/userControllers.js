@@ -221,27 +221,28 @@ exports.bookmarks = async (req, res) => {
 
 //TODO Remove bookmsrks
 exports.removeBookmarks = async (req, res) => {
+    console.log("enter in backened")
     const data = req.body
     const { id } = req.params
     try {
         const delBookmark = await userModel.updateOne({ _id: id }, { $pull: { bookmarks: data } }).exec()
 
 
-        if (delBookmark.ok)
-            res.send({
+        if (!delBookmark)
+             res.send({
                 message: "bookmark was not removed",
                 success: false,
             })
 
-        res.send({
-            message: "bookmark removed successfully",
+         res.send({
+            message: "bookmark of user from server removed successfully",
             success: true,
-            delBookmark
+       delBookmark,
         })
 
 
     } catch (error) {
-        console.log('Bookmark could not be saved:', error);
+        console.log('Bookmark could not be removed:', error);
         res.status(500).send({ message: 'Bookmark could not be removed properly', error });
     }
 
