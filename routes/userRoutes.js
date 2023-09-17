@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const {registerUser, loginUser, allUsers, bookmarks, removeBookmarks, sendotp, getUserBookmarks, updateUserDetails, getUser} =require('../controllers/userControllers')
+const {registerUser, loginUser, allUsers, bookmarks, removeBookmarks, sendotp, getUserBookmarks, updateUserDetails, getUser, verifyOtp} =require('../controllers/userControllers')
 
 
 
@@ -12,6 +12,9 @@ router.post('/login',loginUser)
 
 //todo sending otp
 router.post('/sendotp',sendotp)
+
+//todo verifying otp...
+router.post('/verifyOtp',verifyOtp)
 
 //todo all users.......
 router.get('/allusers',allUsers)

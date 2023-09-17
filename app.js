@@ -1,14 +1,16 @@
 const dotenv=require('dotenv')
+dotenv.config()
 const express = require('express')
 const cors=require('cors')
 
 //dot env configuration
-dotenv.config()
+console.log(process.env.USER_PASSWORD)
+
+const app = express()
 
 //database connection
 require('./db/connection')
 
-const app = express()
  
 //middlewares
 app.use(express.json())

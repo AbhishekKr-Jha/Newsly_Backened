@@ -3,13 +3,13 @@ const otpModel = require('../schemas/OtpSchema.js')
 const nodeMailer = require('nodemailer')
 
 
-const transporter = nodemailer.createTransport({
+const transporter = nodeMailer.createTransport({
     host: "smtp-relay.brevo.com",
     port: 587,
     secure: false,
     auth: {
-      user: 'newabkj1234@gmail.com',
-      pass: 'JdWMYatHXsDvGwNT'
+      user:process.env.USER_EMAIL ,
+      pass:process.env.USER_PASSWORD
     }
   });
   
@@ -86,21 +86,15 @@ exports.loginUser = async (req, res) => {
 
 //todo sending otp
 exports.sendotp = async (req, res) => {
-    const { email } = req.bidy
+    const { email } = req.body
+    console.log("email sfr.........")
     if (!email)
-        res.send({
+       return res.send({
             message: "please enter email fields",
             success: false
         })
     try {
 
-        const userEmailexist = await userModel.findOne({ email })
-        if (!userEmailexist)
-             return res.send({
-                message: "invalid credentials,user not exist",
-                success: false
-            })
-e
         const otp = Math.floor(100000 + Math.random() * 900000);
 
         const previousOtp = await otpModel.findOne({ email })
@@ -169,6 +163,37 @@ e
        return res.send(error)
     }
 }
+
+
+
+
+
+//todo verifying OTP...
+exports.verifyOtp=async(req,res)=>{
+const {email,otp}=req.body
+if(!email || !otp){
+    return res.send({message:"please enter your otp"})
+}
+try {
+    const otpVerification=await otpModel.findOne({email})
+    if(otpVerification.otp==otp){
+return res.json({
+    message:"otp verification successful",
+    success:true,
+})
+    }else{
+        return res.json({
+            message:"invalid otp",
+            success:false,
+        })
+    }
+} catch (error) {
+    return res.send({message:"verification failed"})
+}
+}
+
+
+
 
 
 
