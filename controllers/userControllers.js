@@ -195,6 +195,7 @@ exports.allUsers = async (req, res) => {
 
 //todo user add bookmarks           
 exports.bookmarks = async (req, res) => {
+    console.log("enter in backened")
     const data = req.body
     const { id } = req.params
     try {
@@ -217,14 +218,16 @@ exports.bookmarks = async (req, res) => {
         console.log('Bookmark could not be saved:', error);
         res.status(500).send({ message: 'Bookmark could not be saved', error });
     }
-}
+}    
 
 //TODO Remove bookmsrks
 exports.removeBookmarks = async (req, res) => {
-    console.log("enter in backened")
+  
     const data = req.body
+
     const { id } = req.params
     try {
+       
         const delBookmark = await userModel.updateOne({ _id: id }, { $pull: { bookmarks: data } }).exec()
 
 
