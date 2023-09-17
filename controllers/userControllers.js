@@ -32,7 +32,7 @@ exports.registerUser = async (req, res) => {
                 message: "user with this  email already exists,please choose another",
                 success: false
             })
-
+if(pw==cpw){
 
         const user = new userModel(req.body)
         const savingUser = await user.save()
@@ -41,8 +41,13 @@ exports.registerUser = async (req, res) => {
             success: true,
             savingUser,
         })
-
-
+    }
+    else{
+        res.send({
+    message:"password and confirm password does not match",
+    success:false,
+})
+    }
     } catch (error) {
         console.log("Error occured dur to  __", error)
         res.send(error)
@@ -253,11 +258,12 @@ exports.bookmarks = async (req, res) => {
 exports.removeBookmarks = async (req, res) => {
 
     const data = req.body
-
+    const {publishedAt} = data
     const { id } = req.params
     try {
+        console.log(req,'fojiouhe')
 
-        const delBookmark = await userModel.updateOne({ _id: id }, { $pull: { bookmarks: data } }).exec()
+        const delBookmark = await userModel.updateOne({ _id: id }, { $pull: { bookmarks:{'publishedAt':publishedAt} } }).exec()
 
 
         if (!delBookmark)
@@ -266,7 +272,7 @@ exports.removeBookmarks = async (req, res) => {
                 success: false,
             })
 
-        res.send({
+        res.send({ 
             message: "bookmark of user from server removed successfully",
             success: true,
             delBookmark,
