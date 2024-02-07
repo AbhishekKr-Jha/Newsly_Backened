@@ -4,7 +4,7 @@ const express = require('express')
 const cors=require('cors')
 
 //dot env configuration
-console.log(process.env.USER_PASSWORD)
+
 
 const app = express()
 

@@ -164,7 +164,7 @@ exports.sendotp = async (req, res) => {
 
         }
     } catch (error) {
-        console.log("Error occured dur to  __", error)
+        console.log("Error occured due to __", error)
        return res.send(error)
     }
 }

@@ -4,7 +4,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "start": "node app.js",
+    "build":"npm install",
+    "dev":"nodemon"
   },
   "keywords": [],
   "author": "",
@@ -18,4 +20,4 @@
     "nodemon": "^3.0.1"
   },
   "description": ""
-}
+} 
