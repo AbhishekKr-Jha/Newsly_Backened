@@ -24,13 +24,14 @@ app.use(cors({
 
 
 //todo routes....
+// const userRoutes=require('../routes/userRoutes')
 const userRoutes=require('./routes/userRoutes')
 
 app.use(userRoutes)
 
 
 
-
+ 
 const port = 5000
 
 app.get('/', (req, res) => {

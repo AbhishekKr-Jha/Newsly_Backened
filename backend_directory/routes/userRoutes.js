@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const {registerUser, loginUser, allUsers, bookmarks, removeBookmarks, sendotp, getUserBookmarks, updateUserDetails, getUser, verifyOtp} =require('../controllers/userControllers')
+const {registerUser, loginUser, allUsers, bookmarks, removeBookmarks, sendotp, getUserBookmarks, updateUserDetails, getUser, verifyOtp} =require('../backend_directory/controllers/userControllers')
 
 
 
