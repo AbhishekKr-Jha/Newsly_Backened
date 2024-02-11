@@ -35,7 +35,7 @@ app.use(userRoutes)
 const port = 5000
 
 app.get('/', (req, res) => {
-  res.send('Hello World good!') 
+  res.send('Hello World good! or say bad') 
 })
 
 app.listen(port, () => {
