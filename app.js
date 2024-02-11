@@ -1,7 +1,7 @@
 const dotenv=require('dotenv')
 dotenv.config()
 const express = require('express')
-const cors=require('cors')
+// const cors=require('cors')
 
 //dot env configuration
 
@@ -17,10 +17,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 //cors connection
-const allowedOrigins = ['http://localhost:3000'];
-app.use(cors({
-  origin: allowedOrigins
-}));
+// const allowedOrigins = ['http://localhost:3000'];
+// app.use(cors({
+//   origin: allowedOrigins
+// }));
 
 
 //todo routes....
@@ -32,7 +32,7 @@ app.use(userRoutes)
 
 
  
-const port = 5000
+const port = process.env.PORT || 5000
 
 app.get('/', (req, res) => {
   res.send('Hello World good! or say bad') 
