@@ -17,9 +17,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 //cors connection
-const allowedOrigins = ['https://headlinehub1108.netlify.app'];
+// const allowedOrigins = ['https://headlinehub1108.netlify.app','http://localhost:3000'];
 app.use(cors({
-  origin: allowedOrigins
+  origin: 'https://headlinehub1108.netlify.app',
+  credentials:true,  
 }));
 
 
